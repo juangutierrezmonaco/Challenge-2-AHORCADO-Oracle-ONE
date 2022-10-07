@@ -1,38 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahorcado</title>
 
+    <!-- Icono pestaña navegador -->
+    <link rel="shortcut icon" href="./images/logo.jpg">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Tailwind CSS & DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d78df47158.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
-    <header>
+
+    <!-- <header>
         <img src="./images/logo-alura.svg" alt="Alura - Logo">
-    </header>
-    
+    </header> -->
+
     <main>
-        
+
+        <div class="container-active" id="contenedorInicio">
+            <h1 class="text-4xl font-bowlby uppercase text-center">¡Juego del ahorcado!</h1>
+
+            <figure class="contenedorImagen">
+                <img src="./images/gallow-alone.svg" alt="Imagen de juego del ahorcado">
+                <img src="./images/hangman-alone.png" alt="Imagen de juego del ahorcado" class="swingimage">
+            </figure>
+
+            <div class="flex gap-20 mt-5">
+                <button class="btn btn-warning" id="botonIniciar">Iniciar juego</button>
+                <button class="btn btn-error" id="botonAgregarPalabra">Agregar palabra</button>
+            </div>
+        </div>
+
+        <div class="container-inactive" id="contenedorJuego">
+            <h1 class="text-4xl font-bowlby uppercase text-center">¡Juego del ahorcado!</h1>
+
+            <figure class="contenedorImagen">
+                <div class="letras-incorrectas font-bowlby uppercase text-2xl text-warning">
+                </div>
+
+                <img src="./images/hangman-1.svg" alt="Imagen de juego del ahorcado" class="image-active">
+                <img src="./images/hangman-2.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-3.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-4.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-5.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-6.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-7.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-8.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-9.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+                <img src="./images/hangman-full.svg" alt="Imagen de juego del ahorcado" class="image-inactive">
+            </figure>
+
+            <div class="letras-correctas font-bowlby uppercase text-2xl"></div>
+
+            <div class="flex gap-20 mt-10">
+                <button class="btn btn-warning" id="botonDesistir">Desistir</button>
+                <button class="btn btn-error" id="botonReiniciar">Reiniciar</button>
+            </div>
+        </div>
+
+        <div class="result-popUp hidden">
+        </div>
+
+        <div class="contenedorPalabra hidden">
+            <div class="flex flex-col">
+                <span class=" font-bowlby uppercase text-2xl">¡Agrega una palabra!</span>
+                <span class="text-md italic">(Podés agregar hasta 8)</span>
+
+                <div class="form-control w-full">
+                    <input type="text" class="input input-bordered w-full max-w-xs mt-3" placeholder="¿Qué palabra deseas agregar?" id='palabraInput'/>
+                    
+                    <label class="label">
+                        <span class="label-text-alt text-base " id="reglas">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            Máx. 8 letras. Sin acentos ni caracteres especiales.
+                        </span>
+                    </label>
+                    
+
+                    <div class="flex gap-3 mt-1">
+                        <button class="btn btn-error btn-sm" id="submitPalabra">Agregar palabra</button>
+                        <button class="btn btn-warning btn-sm" id="volverAtras">Cancelar</button>
+                    </div>
+                </div>
+
+                <div class="mt-5 max-w-xs">
+                    <span class="text-lg font-semibold" id="paraAgregar">Palabras a agregar: </span>
+                </div>
+
+                <button class="btn btn-success btn-sm w-fit mt-2 justify-self-center" id="submitPalabras">Agregar palabras</button>
+            </div>
+        </div>
+
+        <button id="botonDudas"><i class="fa-solid fa-circle-question text-5xl"></i></button>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>
             Juan Manuel Gutierrez Monaco - Desarrollado para el programa ONE de Oracle en conjunto con Alura LATAM - 2022
             <i class="fa-solid fa-grip-lines-vertical"></i>
             <a href="https://www.linkedin.com/in/juangutierrezmonaco/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/juangutierrezmonaco" target="_blank"><i class="fa-brands fa-square-github"></i></a>
         </p>
-    </footer>
+    </footer> -->
 
     <!-- JS -->
     <script src="./js/index.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/juego.js"></script>
+    <script src="./js/nuevasPalabras.js"></script>
 </body>
+
 </html>

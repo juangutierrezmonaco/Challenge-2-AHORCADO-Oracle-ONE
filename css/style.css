@@ -1,123 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+
 /********************************/
 /**          GENERALES         **/
 /********************************/
 
-* {     /* Reseteo y fuente general*/
+* {
+    /* Reseteo y fuente general*/
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    line-height: 150%;
+}
+
+.font-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.font-bowlby {
+    font-family: 'Bowlby One', cursive;
 }
 
 body {
     min-width: 100%;
     min-height: 100vh;
-    background-color: #F3F5FC;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background-color: #26D2E6;
 }
 
-button {
-    cursor:pointer;
-}
-
-button:hover {
-    opacity: 80%;
-}
-
-button:focus {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    outline: none;
-}
-
-a {
-    text-decoration: none;
-	color: inherit;
-}  
-
-a:hover {
-    color: inherit;
-}
-
-textarea {
-    border: none;
-    background-color: transparent;
-    resize: none;
-    outline: none;
-}
-
-/********************************/
-/**           HEADER           **/
-/********************************/
-header {
-    position: absolute;
-    left: 40px;
-    top: 40px;
-    width: 10%;
-}
-
-header > img {
+/* Main */
+.contenedorImagen {
+    height: 500px;
     width: 100%;
-}
-
-/********************************/
-/**            MAIN            **/
-/********************************/
-main {
-    width: 100%;
-    height: 92vh;
-    min-height: 600px;
-    padding: 15px;
-    padding-left:10%;
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-/********************************/
-/**           FOOTER           **/
-/********************************/
-footer > p{
-    color: white;
-    background-color: #0A3871;
-    font-size: 1.5rem;
-    padding: 10px;
-    text-align: center;
+.contenedorImagen> img {
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+}
+
+.container-inactive {
+    display: none;
+}
+
+.container-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-inactive {
+    z-index: -1;
+}
+
+.image-active {
+    z-index: 1;
+}
+
+.letras-incorrectas {
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.letras-correctas {
+    display: flex;
+    gap: 20px;
+}
+
+.letra-correcta {
+    border-bottom: solid 2px black;
 }
 
 /* Animaciones -- Animista */
-.shake-horizontal{animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both}
-@keyframes shake-horizontal{0%,100%{transform:translateX(0)}10%,30%,50%,70%{transform:translateX(-10px)}20%,40%,60%{transform:translateX(10px)}80%{transform:translateX(8px)}90%{transform:translateX(-8px)}}
+.shake-horizontal {
+    animation: shake-horizontal .8s cubic-bezier(.455, .03, .515, .955) both
+}
 
-/********************************/
-/**       MEDIA QUERIES        **/
-/********************************/
-@media screen and (max-width: 768px) {      /* Tablet */
-    /* Header */
-    header {
-        position: relative;
-        left: 0;
-        top: 0;
-        width: 100%;
-        padding-top: 50px;
-        display: flex;
-        justify-content: flex-start;
+@keyframes shake-horizontal {
+
+    0%,
+    100% {
+        transform: translateX(0)
     }
 
-    header img {
-        width: 20%;
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateX(-10px)
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateX(10px)
+    }
+
+    80% {
+        transform: translateX(8px)
+    }
+
+    90% {
+        transform: translateX(-8px)
     }
 }
 
+@-webkit-keyframes swinging{
+    0%{-webkit-transform: rotate(10deg);}
+    50%{-webkit-transform: rotate(-5deg)}
+    100%{-webkit-transform: rotate(10deg);}
+}
+ 
+@keyframes swinging{
+    0%{transform: rotate(5deg);}
+    50%{transform: rotate(-2.5deg)}
+    100%{transform: rotate(5deg);}
+}
+ 
+.swingimage{
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 75% 0;
+    -webkit-animation: swinging ease-in-out 2s infinite alternate;
+    animation: swinging ease-in-out 2s infinite alternate;
+}
+/*  */
 
-@media screen and (max-width: 425px) {      /* Celular */
-    header {
-        padding: 10px 0px;
+.result-popUp {
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.result-popUp>img {
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+/* .btn-reinicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+} */
+
+#botonDudas {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* aaaa */
+/* From uiverse.io by @fanishah */
+.planet {
+    display: block;
+    width: 125px;
+    height: 125px;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 50%;
+    background: #fcc96b;
+    background: #fcc96b;
+    background: linear-gradient(180deg,
+            #fcc96b 0%,
+            #fcc96b 15%,
+            #f7ae01 15%,
+            #f7ae01 19%,
+            #fcc96b 19%,
+            #fcc96b 22%,
+            #f7ae01 22%,
+            #f7ae01 28%,
+            #fcc96b 28%,
+            #fcc96b 31%,
+            #fcc96b 33%,
+            #fcc96b 36%,
+            #f7ae01 36%,
+            #f7ae01 48%,
+            #fcc96b 48%,
+            #fcc96b 55%,
+            #f7ae01 55%,
+            #f7ae01 66%,
+            #fcc96b 66%,
+            #fcc96b 70%,
+            #f7ae01 70%,
+            #f7ae01 73%,
+            #fcc96b 73%,
+            #fcc96b 82%,
+            #f7ae01 82%,
+            #c7ba9d 86%,
+            #fcc96b 86%);
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25),
+        inset 8px -4px 6px rgba(199, 128, 0, 0.5),
+        inset -8px 4px 8px rgba(255, 235, 199, 0.5), inset 20px -5px 12px #f7ae01,
+        0 0 100px #ffffff59;
+    transform: rotateZ(-15deg);
+}
+
+.planet::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 16px solid #e1a519;
+    border-top-width: 0;
+    border-radius: 50%;
+    box-shadow: 0 -2px 0 #c18620;
+    animation: rings1 0.8s infinite linear;
+}
+
+.planet::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 8px solid #d48b0c;
+    border-top-width: 0;
+    border-radius: 50%;
+    box-shadow: 0 -2px 0 #b99309;
+    animation: rings2 0.8s infinite linear;
+}
+
+@keyframes rings1 {
+    0% {
+        transform: rotateX(65deg) rotateZ(0deg) scale(1.75);
     }
 
-    header img {
-        width: 30%;
+    100% {
+        transform: rotateX(65deg) rotateZ(360deg) scale(1.75);
     }
+}
+
+@keyframes rings2 {
+    0% {
+        transform: rotateX(65deg) rotateZ(0deg) scale(1.7);
+    }
+
+    100% {
+        transform: rotateX(65deg) rotateZ(360deg) scale(1.7);
+    }
+}
+
+/* Nueva palabra */
+.contenedorPalabra {
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1E9EB9   ;
+    background-image: url('../images/addWordBackground.svg');
+    background-size: 100% 100%;
+
+    display: flex;
+    padding-top: 8%;
+    padding-left: 30%;
 }
