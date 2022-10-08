@@ -25,13 +25,7 @@
 </head>
 
 <body>
-
-    <!-- <header>
-        <img src="./images/logo-alura.svg" alt="Alura - Logo">
-    </header> -->
-
-    <main>
-
+    <main class="mt-7">
         <div class="container-active" id="contenedorInicio">
             <h1 class="text-4xl font-bowlby uppercase text-center">¡Juego del ahorcado!</h1>
 
@@ -41,7 +35,20 @@
             </figure>
 
             <div class="flex gap-20 mt-5">
-                <button class="btn btn-warning" id="botonIniciar">Iniciar juego</button>
+
+
+                <div class="dropdown dropdown-top">
+                    <label tabindex=0 class="btn btn-warning">Iniciar juego</label>
+                    <ul tabindex=0 class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mb-2">
+                        <li class="botonIniciar"><a class="active:bg-black">Programación</a></li>
+                        <li class="botonIniciar"><a class="active:bg-black">Empresas de Tecnología</a></li>
+                        <li class="botonIniciar"><a class="active:bg-black">Animales</a></li>
+                        <li class="botonIniciar"><a class="active:bg-black">Países</a></li>
+                        <li class="botonIniciar btn-disabled" id="botonMisPalabras"><a class="active:bg-black">Mis palabras</a></li>
+                        <li class="botonIniciar"><a class="active:bg-black">Todas las categorías</a></li>
+                    </ul>
+                </div>
+
                 <button class="btn btn-error" id="botonAgregarPalabra">Agregar palabra</button>
             </div>
         </div>
@@ -82,15 +89,16 @@
                 <span class="text-md italic">(Podés agregar hasta 8)</span>
 
                 <div class="form-control w-full">
-                    <input type="text" class="input input-bordered w-full max-w-xs mt-3" placeholder="¿Qué palabra deseas agregar?" id='palabraInput'/>
-                    
+                    <input type="text" class="input input-bordered w-full max-w-xs mt-3"
+                        placeholder="¿Qué palabra deseas agregar?" id='palabraInput' />
+
                     <label class="label">
                         <span class="label-text-alt text-base " id="reglas">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            Máx. 8 letras. Sin acentos ni caracteres especiales.
+                            Máx. 20 letras. Sin acentos ni caracteres especiales.
                         </span>
                     </label>
-                    
+
 
                     <div class="flex gap-3 mt-1">
                         <button class="btn btn-error btn-sm" id="submitPalabra">Agregar palabra</button>
@@ -102,21 +110,21 @@
                     <span class="text-lg font-semibold" id="paraAgregar">Palabras a agregar: </span>
                 </div>
 
-                <button class="btn btn-success btn-sm w-fit mt-2 justify-self-center" id="submitPalabras">Agregar palabras</button>
+                <button class="btn btn-success btn-sm w-fit mt-2 justify-self-center" id="submitPalabras">Agregar
+                    palabras</button>
             </div>
         </div>
-
-        <button id="botonDudas"><i class="fa-solid fa-circle-question text-5xl"></i></button>
     </main>
 
-    <!-- <footer>
+    <button id="botonDudas"><i class="fa-solid fa-circle-question text-6xl"></i></button>
+    <footer class="myFooter">
         <p>
             Juan Manuel Gutierrez Monaco - Desarrollado para el programa ONE de Oracle en conjunto con Alura LATAM - 2022
             <i class="fa-solid fa-grip-lines-vertical"></i>
-            <a href="https://www.linkedin.com/in/juangutierrezmonaco/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/juangutierrezmonaco" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+            <a href="https://www.linkedin.com/in/juangutierrezmonaco/" target="_blank"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+            <a href="https://github.com/juangutierrezmonaco" target="_blank"><i class="fa-brands fa-square-github text-2xl"></i></a>
         </p>
-    </footer> -->
+    </footer>
 
     <!-- JS -->
     <script src="./js/index.js"></script>

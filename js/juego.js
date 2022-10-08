@@ -42,15 +42,42 @@ const getIndicesDeLetra = (palabra, letra) => {
 }
 
 // Juego
-botonIniciarJuego.addEventListener("click", () => {
-    contenedorInicio.classList.remove('container-active');
-    contenedorInicio.classList.add('container-inactive');
+botonesIniciarJuego.forEach((boton) =>  {
+    boton.addEventListener("click", ({ target }) => {
+        // Selecciono la lista de palabras
+        const valueBoton = target.innerText;
+        switch (valueBoton) {
+            case 'Programación':
+                palabrasSecretas = palabraProgramación;
+                break;
+            case 'Empresas de Tecnología':
+                palabrasSecretas = palabrasEmpresas;
+                break;
+            case 'Animales':
+                palabrasSecretas = palabrasAnimales;
+                break;
+            case 'Países':
+                palabrasSecretas = palabrasPaíses;
+                break;
+            case 'Mis palabras':
+                palabrasSecretas = nuevasPalabras;
+                break;
+            case 'Todas las categorías':
+                palabrasSecretas = palabrasTodos;
+                break;
+        }
 
-    contenedorJuego.classList.remove('container-inactive');
-    contenedorJuego.classList.add('container-active');
+        // Modifico el DOM
+        contenedorInicio.classList.remove('container-active');
+        contenedorInicio.classList.add('container-inactive');
+    
+        contenedorJuego.classList.remove('container-inactive');
+        contenedorJuego.classList.add('container-active');
+    
+        cargarJuego();
+    }) 
+});
 
-    cargarJuego();
-})
 
 const setCondicionesIniciales = () => {
     // Setteo de variables

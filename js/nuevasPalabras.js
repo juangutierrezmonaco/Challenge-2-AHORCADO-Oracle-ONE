@@ -10,7 +10,7 @@ const paraAgregarContainer = document.querySelector('#paraAgregar');
 const palabrasParaAgregar = [];
 
 const palabraEsValida = (palabra) => {
-    const pattern = new RegExp('^[A-Za-z]{1,10}$');
+    const pattern = new RegExp('^[A-Za-z]{1,20}$');
 
     return pattern.test(palabra);
 }
@@ -34,7 +34,7 @@ const agregarPalabra = () => {
             palabraInput.value = '';
 
             // Si ya ingresó 8, deshabilito el botón.
-            palabrasParaAgregar.length == 8 && botonSubmitPalabra.classList.add('btn-disabled')
+            palabrasParaAgregar.length == 8 && botonSubmitPalabra.classList.add('btn-disabled');
         }
 
     } else {
@@ -76,7 +76,11 @@ const iniciarEventosPalabras = () => {
 
     botonSubmitPalabras.addEventListener('click', () => {
         // Agrego las palabras
-        palabrasSecretas.push(...palabrasParaAgregar);
+        nuevasPalabras.push(...palabrasParaAgregar);
+        palabrasTodos.push(...palabrasParaAgregar);
+
+        // Modifico el DOM
+        document.querySelector('#botonMisPalabras').classList.remove('btn-disabled');
 
         // Setteo las condiciones iniciales y saco de la vista el contenedor
         contenedorPalabra.classList.add('hidden');

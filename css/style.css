@@ -25,12 +25,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #26D2E6;
 }
 
-/* Main */
+/* Juego */
 .contenedorImagen {
     height: 500px;
     width: 100%;
@@ -119,6 +119,13 @@ body {
         transform: translateX(-8px)
     }
 }
+ 
+.swingimage{
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 75% 0;
+    -webkit-animation: swinging ease-in-out 2s infinite alternate;
+    animation: swinging ease-in-out 2s infinite alternate;
+}
 
 @-webkit-keyframes swinging{
     0%{-webkit-transform: rotate(10deg);}
@@ -131,15 +138,8 @@ body {
     50%{transform: rotate(-2.5deg)}
     100%{transform: rotate(5deg);}
 }
- 
-.swingimage{
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 75% 0;
-    -webkit-animation: swinging ease-in-out 2s infinite alternate;
-    animation: swinging ease-in-out 2s infinite alternate;
-}
-/*  */
 
+/* Resultado */
 .result-popUp {
     z-index: 3;
     width: 100vw;
@@ -154,28 +154,19 @@ body {
     gap: 5px;
 }
 
-.result-popUp>img {
+.result-popUp > img {
     height: 400px;
     margin-bottom: 30px;
 }
 
-/* .btn-reinicio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 10px;
-} */
-
 #botonDudas {
     position: absolute;
     border-radius: 100%;
-    bottom: 20px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
 }
 
-/* aaaa */
-/* From uiverse.io by @fanishah */
+/* Loader */
 .planet {
     display: block;
     width: 125px;
@@ -283,4 +274,20 @@ body {
     display: flex;
     padding-top: 8%;
     padding-left: 30%;
+}
+
+/* Footer */
+.myFooter {
+    width: 100vw;
+}
+
+.myFooter > p{
+    color: white;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
