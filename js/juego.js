@@ -7,14 +7,34 @@ const botonReiniciar = document.querySelector("#botonReiniciar");
 // Variables
 const letrasCorrectas = [];
 const letrasIncorrectas = [];
+const indicesPalabrasUsadas = [];
 let vidas = 9;
 let aciertos = 0;
 
 // Funciones sobre la palabra o validaciones
-const getRandomPalabra = (palabras) => {
-    const randomIndex = Math.floor(Math.random() * palabras.length);
+const generateRandomIndexWithoutRep = (palabras) => {
+    let randomNumber;
 
-    return palabras[randomIndex];
+    if (indicesPalabrasUsadas.length < palabras.length) {
+        do {
+            randomNumber = Math.floor(Math.random() * palabras.length);
+        } while (indicesPalabrasUsadas.includes(randomNumber));
+    } else {
+        randomNumber = -1;
+    }
+
+    return randomNumber;
+}
+
+const getRandomPalabra = (palabras) => {
+    const randomIndex = generateRandomIndexWithoutRep(palabras); 
+
+    if (randomIndex != -1) {
+        indicesPalabrasUsadas.push(randomIndex);
+        return palabras[randomIndex];
+    } else {
+        return '';
+    }
 }
 
 const dibujarGuiones = (n) => {
@@ -105,18 +125,46 @@ const cargarJuego = (generateNewWord = true) => {
 
     // Flag para saber si generar una nueva palabra o dejar la misma
     palabra = generateNewWord ? getRandomPalabra(palabrasSecretas) : palabra;
-    dibujarGuiones(palabra.length);
-    window.addEventListener('keydown', inputHandler);   
+
+    if (palabra){
+        dibujarGuiones(palabra.length);
+        window.addEventListener('keydown', inputHandler);   
+        
+        // Eventos de botones de juego
+        botonDesistir.addEventListener('click', () => {
+            finDelJuego('./images/lose.jpg', 'Imagen de derrota en juego del ahorcado', 'Perdiste', `La palabra era: ${palabra}`, 'red');
+        });
+
+        botonReiniciar.addEventListener('click', () => {
+            cargarJuego(false);
+        });
+    } else {   // Si ya usé todas las palabras
+        const swalCustom = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+            },
+            buttonsStyling: false
+        })
     
-    // Eventos de botones de juego
-    botonDesistir.addEventListener('click', () => {
-        finDelJuego('./images/lose.jpg', 'Imagen de derrota en juego del ahorcado', 'Perdiste', `La palabra era: ${palabra}`, 'red');
-    });
+        swalCustom.fire({
+            icon: 'info',
+            title: 'No hay más palabras en esta categoría.',
+            confirmButtonText: 'Volver al menú principal',
+        }).then(() => {
+            resetearJuego();
+        })
+    }
+}
 
-    botonReiniciar.addEventListener('click', () => {
-        cargarJuego(false);
-    });
+const resetearJuego = () => {
+    setCondicionesIniciales();
+    indicesPalabrasUsadas.splice(0, indicesPalabrasUsadas.length);
+    
+    contenedorJuego.classList.remove('container-active');
+    contenedorJuego.classList.add('container-inactive');
 
+    contenedorInicio.classList.remove('container-inactive');
+    contenedorInicio.classList.add('container-active');
 }
 
 const inputHandler = (e) => {
@@ -242,12 +290,7 @@ const finDelJuego = (imgUrl, imgAlt, title, subtitle, textColor) => {
         const botonVolverAlMenu = popUpNodo.querySelector('#botonVolverAlMenu');
         botonVolverAlMenu.addEventListener('click', () => {
             popUpNodo.classList.add('hidden');
-            setCondicionesIniciales();
-            contenedorJuego.classList.remove('container-active');
-            contenedorJuego.classList.add('container-inactive');
-
-            contenedorInicio.classList.remove('container-inactive');
-            contenedorInicio.classList.add('container-active');
+            resetearJuego();
         });
 
     }, 1000);
