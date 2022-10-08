@@ -3,6 +3,7 @@ const letrasCorrectasContainer = document.querySelector('.letras-correctas');
 const letrasIncorrectasContainer = document.querySelector('.letras-incorrectas');
 const botonDesistir = document.querySelector('#botonDesistir');
 const botonReiniciar = document.querySelector("#botonReiniciar");
+const tituloPantalla = document.querySelector('#tituloJuego');
 
 // Variables
 const letrasCorrectas = [];
@@ -86,6 +87,9 @@ botonesIniciarJuego.forEach((boton) =>  {
                 palabrasSecretas = palabrasTodos;
                 break;
         }
+
+        // Setteo el título
+        tituloPantalla.innerText = valueBoton;
 
         // Modifico el DOM
         contenedorInicio.classList.remove('container-active');
