@@ -31,7 +31,7 @@ botonDudas.addEventListener('click', () => {
 
     swalCustom.fire({
         title: 'Instrucciones',
-        text: 'Escribí desde el teclado para jugar.',
+        text: 'Escribí desde el teclado para jugar o desde el teclado virtual.',
         confirmButtonText: '¡Entendido!',
     });
 });
