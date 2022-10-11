@@ -270,10 +270,10 @@ const finDelJuego = (imgUrl, imgAlt, title, subtitle, textColor) => {
     setTimeout(() => {   
         popUpNodo.classList.add('bg-black/80'); 
         popUpNodo.innerHTML = `
-        <img src=${imgUrl} alt=${imgAlt} class='rounded-lg'>
+        <img src=${imgUrl} alt=${imgAlt} class='rounded-lg px-10'>
         <span class="text-4xl font-bowlby text-${textColor}-500 uppercase">${title}</span>
         <span class="text-lg font-bowlby italic text-${textColor}-400 uppercase">${subtitle}</span>
-        <div class='flex gap-3 mt-4'>
+        <div class='flex flex-wrap justify-center gap-3 mt-4'>
             <button class="btn btn-info flex justify-center items-center gap-2" id='botonOtraPalabra'>
                 <span>Probar con otra palabra</span>
                 <i class="fa-solid fa-rotate"></i>
@@ -298,4 +298,12 @@ const finDelJuego = (imgUrl, imgAlt, title, subtitle, textColor) => {
         });
 
     }, 1000);
+}
+
+// Teclado
+const keys = document.querySelectorAll('.key');
+for (const key of keys) {
+    key.addEventListener('click', () => {
+        window.dispatchEvent( new KeyboardEvent( 'keydown', { key: key.innerText } ) );
+    })    
 }

@@ -28,6 +28,8 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #26D2E6;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* Juego */
@@ -143,7 +145,7 @@ body {
 .result-popUp {
     z-index: 3;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -263,17 +265,18 @@ body {
 .contenedorPalabra {
     z-index: 3;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     background-color: #1E9EB9   ;
     background-image: url('../images/addWordBackground.svg');
-    background-size: 100% 100%;
+    background-size: 120% 120%;
+    background-position: center;
 
     display: flex;
-    padding-top: 8%;
-    padding-left: 30%;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Footer */
@@ -286,8 +289,19 @@ body {
     background-color: black;
     padding: 10px;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+    .contenedorImagen {
+        height: 350px;
+    }
+
+    .result-popUp > img {
+        height: 300px;
+    }
+
+    .contenedorPalabra {
+        background-image: none;
+    }
 }
