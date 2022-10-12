@@ -20,7 +20,7 @@ const agregarPalabra = () => {
     if (palabraEsValida(palabra)) {
 
         // Si está repetida
-        if (palabrasParaAgregar.includes(palabra)) {
+        if (palabrasParaAgregar.includes(palabra) || nuevasPalabras.includes(palabra)) {
             Toast.fire({
                 icon: 'info',
                 title: '¡Ya ingresaste esa palabra!'
