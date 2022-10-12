@@ -12,7 +12,6 @@ Página realizada utilizando las siguientes tecnologías:
 Desarrollar el clásico juego del ahorcado.
 
 ### Requisitos
-
 - Debe funcionar solo con letras mayúsculas;
 - No deben ser utilizadas letras con acentos ni caracteres especiales;
 - Al completar el dibujo de la horca, debe ser mostrado un mensaje "Fin del juego" en la pantalla;
@@ -25,3 +24,10 @@ Desarrollar el clásico juego del ahorcado.
 
 ### Extra
 - La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, en un botón "Agregar palabra".
+
+### Notas
+Se realizó la funcionalidad para que: 
+- Las palabras no toquen repetidas, siempre se busca al azar una palabra que no se jugó todavía.
+- No se puedan agregar palabras repetidas.
+- Teclado virtual para poder jugar desde el celular sin abrir el teclado.
+- Categorías de palabras.
